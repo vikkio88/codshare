@@ -7,7 +7,8 @@
   "scripts": {
     "data:clean": "zx scripts/clean-data.js",
     "data:get": "zx scripts/get-data.mjs",
-    "fe:dev": "cd fe && npm run dev"
+    "fe:dev": "cd fe && npm run dev",
+    "deploy": "cd fe && npm run deploy"
   },
   "keywords": [],
   "author": "",
