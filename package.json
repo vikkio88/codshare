@@ -1,0 +1,18 @@
+{
+  "name": "codshare",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "data:clean": "zx scripts/clean-data.js",
+    "data:get": "zx scripts/get-data.mjs",
+    "fe:dev": "cd fe && npm run dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "zx": "^7.1.1"
+  }
+}
