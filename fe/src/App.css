@@ -2,7 +2,11 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+button {
+  font-size: 1.2em;
 }
+
+button:disabled {
+  cursor: not-allowed;
+}
+

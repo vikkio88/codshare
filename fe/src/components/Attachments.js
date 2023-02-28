@@ -3,7 +3,8 @@ import Attachment from "./Attachment";
 import "./styles/Attachments.css";
 
 
-const Attachments = ({ weapon = null, attachments = [], onSet }) => {
+const Attachments = ({ config, onSet }) => {
+    const { attachments, weapon } = config;
     const selects = [...Array(Math.min(attachments.length + 1, MAX_ATTACHMENTS)).keys()];
     return <div className="attachmentList">
         {selects.map(i => {
@@ -18,15 +19,12 @@ const Attachments = ({ weapon = null, attachments = [], onSet }) => {
                                 newAttachments[i] = attachment;
                                 onSet({ attachments: newAttachments });
                             }}
-                            weapon={weapon}
-                            attachments={attachments}
+                            onRemove={attachment => {
+                                const newAttachments = attachments.filter(a => a.id !== attachment.id);
+                                onSet({ attachments: newAttachments });
+                            }}
+                            config={config}
                         />
-                        <button onClick={() => {
-                            // this needs to remove the specific attachment
-                            const newAttachments = [...attachments];
-                            newAttachments.splice(i, 1);
-                            onSet({ attachments: newAttachments });
-                        }}>x</button>
                     </div>
                 )
             );
