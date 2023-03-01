@@ -1,6 +1,8 @@
 import Select from 'react-select';
 import list from "../data/db/list.json";
 
+import "./styles/Weapons.css";
+
 const toOption = (weapon) => {
     if (!Boolean(weapon)) return null;
 
@@ -8,16 +10,21 @@ const toOption = (weapon) => {
 };
 
 
-function Weapons({ onSelect, config }) {
+function Weapons({ onSelect, onReset, config }) {
     const options = list.weapons.map(w => toOption(w));
     return (
-        <Select
-            placeholder="Select Weapon..."
-            value={toOption(config?.weapon)}
-            onChange={onSelect}
-            options={options}
-            isSearchable
-        />
+        <div className="weaponSelect">
+            <Select
+                placeholder="Select Weapon..."
+                value={toOption(config?.weapon)}
+                onChange={onSelect}
+                options={options}
+                isSearchable
+            />
+            {Boolean(config.weapon) && (
+                <button onClick={onReset}>🗑️</button>
+            )}
+        </div>
     );
 }
 

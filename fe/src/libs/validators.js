@@ -20,3 +20,15 @@ export const validateLoadout = ({ weapon, attachments }) => {
 
     return { weapon: weapon, attachments: correctAttachments };
 };
+
+export const mergeTuning = ({ tuning, index, subIndex, value = null }) => {
+    const previous = tuning?.[index] ?? [undefined, undefined];
+    const newValue = parseInt(value);
+    previous[subIndex] = isNaN(newValue) ? undefined : newValue;
+    return {
+        ...tuning,
+        [index]: previous
+    };
+};
+
+export const isTuningEmpty = tuning => !tuning || tuning.length < 2 || (tuning[0] === undefined && tuning[1] === undefined);

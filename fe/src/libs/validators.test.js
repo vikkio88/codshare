@@ -1,4 +1,4 @@
-import { validateLoadout } from "./validators";
+import { validateLoadout, mergeTuning } from "./validators";
 import { fromSlug } from "./slugger";
 import { MAX_ATTACHMENTS } from "../config";
 import map from "../data/db/map.json";
@@ -53,4 +53,18 @@ describe("Validate Loadout", () => {
         expect(result.attachments.length).toEqual(attachments.length - 1);
     });
 
+});
+
+
+describe("Tuning validators", () => {
+    it.each([
+        [0, 0, 1, { 0: [1, undefined], 1: [1, 2] }],
+        [1, 0, -3, { 1: [-3, 2] }],
+        [3, 1, "bla", { 1: [1, 2], 3: [undefined, undefined] }],
+
+    ])("mergeTuning returns correct info", (index, subIndex, value, expected) => {
+        const initialConfig = { 1: [1, 2] };
+        const merged = mergeTuning({ tuning: initialConfig, index, subIndex, value });
+        expect(merged).toEqual(expected);
+    });
 });

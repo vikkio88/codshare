@@ -1,0 +1,26 @@
+.attachIndicators {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.attachIndicators h1 {
+    margin: 0;
+    margin-left: 1em;
+}
+
+.attach {
+    width: 30px;
+    height: 35px;
+    margin: 0.5em;
+    border-radius: 0 0 15px 0;
+}
+
+.attach.empty {
+    background-color: #9B9E9D;
+}
+
+.attach.full {
+    background-color: #DE9336;
+}

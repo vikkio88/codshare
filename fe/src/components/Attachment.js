@@ -13,7 +13,7 @@ const toOption = attachment => {
 
 
 
-function Attachment({ number, onSelect, onRemove, config }) {
+function Attachment({ number, onSelect, onRemove, onTune, config }) {
     const { weapon, attachments = [] } = config;
     const options = [];
     for (const attachId of weapon?.attachments) {
@@ -35,7 +35,7 @@ function Attachment({ number, onSelect, onRemove, config }) {
                 isSearchable
             />
             <div className="buttons">
-                {isAttachmentSelected && <Tuning />}
+                {isAttachmentSelected && <Tuning config={config.tuning} number={number} onTune={onTune} />}
                 <button
                     onClick={() => onRemove(attachments?.[number])}
                     disabled={!isAttachmentSelected}

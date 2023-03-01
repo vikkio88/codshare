@@ -1,0 +1,16 @@
+.weaponSelect {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .weaponSelect>div {
+    font-size: 1.6em;
+  }
+  
+  .weaponSelect>div {
+    flex: 5
+  }
+  
+  .weaponSelect>button {
+    flex: 1;
+  }
