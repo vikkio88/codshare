@@ -23,5 +23,24 @@ describe("Slugger", () => {
 });
 
 describe("fromSlug", () => {
+    it("returns a config if the slug is set correctly", () => {
+        const slug = 'm4';
+        const result = fromSlug(slug);
+
+        expect(result).toEqual({ weapon: map.weapons.m4, attachments: [] });
+    });
+
+    it("returns a config with attachment if the slug is set correctly", () => {
+        const slug = 'm4.csg257';
+        const result = fromSlug(slug);
+
+        expect(result).toEqual({ weapon: map.weapons.m4, attachments: [{ ...map.attachments[map.weapons.m4.attachments[0]] }] });
+    });
+
+    it.each(['m4.csg257', 'm4.csg257.', 'm4.csg257.cs33357'])("returns a config with attachment if the slug is set correctly with some edgecases", (slug) => {
+        const result = fromSlug(slug);
+
+        expect(result).toEqual({ weapon: map.weapons.m4, attachments: [{ ...map.attachments[map.weapons.m4.attachments[0]] }] });
+    });
 
 });

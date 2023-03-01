@@ -22,6 +22,15 @@ describe("Validate Loadout", () => {
         expect(result.attachments.length).toEqual(attachments.length - 1);
     });
 
+    it("Returns the filtered loadout if it contains duplicated attachments", () => {
+        //                      dk230 is mentioned twice added once
+        const wrongM4 = 'm4.dk230.dk230.spbi395.sm693.dfps14';
+        const { weapon, attachments } = fromSlug(wrongM4);
+        const result = validateLoadout({ weapon, attachments });
+        expect(result.weapon).toEqual(weapon);
+        expect(result.attachments.length).toEqual(attachments.length - 1);
+    });
+
     it("Returns the filtered loadout if it contains too many attachments", () => {
         const wrongM4 = 'm4.csg257.h2b11.spbi395.sm693.dfps14.cb849';
         const { weapon, attachments } = fromSlug(wrongM4);
