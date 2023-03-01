@@ -23,7 +23,7 @@ export const validateLoadout = ({ weapon, attachments }) => {
 
 export const mergeTuning = ({ tuning, index, subIndex, value = null }) => {
     const previous = tuning?.[index] ?? [undefined, undefined];
-    const newValue = parseInt(value);
+    const newValue = parseFloat(value);
     previous[subIndex] = isNaN(newValue) ? undefined : newValue;
     return {
         ...tuning,
