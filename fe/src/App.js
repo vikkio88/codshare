@@ -1,30 +1,17 @@
-import { useState } from "react";
-import Weapons from "./components/Weapons";
-import Attachments from "./components/Attachments";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import { slugger } from "./libs/slugger";
-
-const initialConfig = { weapon: null, attachments: [], tuning: {} };
+import { Create, View } from "./pages";
 
 function App() {
-  const [config, setConfig] = useState({ ...initialConfig });
-  const appendConfig = udpates => {
-    const newConfig = { ...config, ...udpates };
-    console.log(slugger(newConfig), newConfig.tuning);
-    setConfig({ ...newConfig });
-  };
+
   return (
     <div className="App">
+      <Routes>
+        <Route path="/" element={<Create />} />
+        <Route path="/view/:slug" element={<View />} />
+        <Route path="/edit/:slug" element={<Create />} />
+      </Routes>
       {/* <input onChange={e => console.log(fromSlug(e.target.value))} /> */}
-      <Weapons
-        onSelect={({ value: weapon }) => appendConfig({ weapon, attachments: [] })}
-        onReset={() => setConfig({ ...initialConfig })}
-        config={config}
-      />
-      <Attachments
-        config={config}
-        appendConfig={appendConfig}
-      />
     </div>
   );
 }

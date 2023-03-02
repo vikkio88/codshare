@@ -9,3 +9,11 @@ button {
 button:disabled {
   cursor: not-allowed;
 }
+
+
+.actionButtons {
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

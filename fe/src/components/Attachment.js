@@ -35,7 +35,7 @@ function Attachment({ number, onSelect, onRemove, onTune, config }) {
                 isSearchable
             />
             <div className="buttons">
-                {isAttachmentSelected && <Tuning config={config.tuning} number={number} onTune={onTune} />}
+                {isAttachmentSelected && <Tuning tuning={config.tuning} number={number} onTune={onTune} />}
                 <button
                     onClick={() => onRemove(attachments?.[number])}
                     disabled={!isAttachmentSelected}
