@@ -17,7 +17,7 @@
     "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "deploy": "npm run build && surge build/ --domain codshare.surge.sh"
+    "deploy": "npm run build && mv build/index.html build/200.html && surge build/ --domain codshare.surge.sh"
   },
   "eslintConfig": {
     "extends": [
