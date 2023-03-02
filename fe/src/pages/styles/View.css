@@ -1,0 +1,15 @@
+.View h1, h2, h3 { margin: 0.4em;}
+
+.attachmentRow {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.attachmentRow>div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
