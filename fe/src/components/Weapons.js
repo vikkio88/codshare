@@ -1,12 +1,13 @@
 import Select from 'react-select';
 import list from "../data/db/list.json";
+import map from "../data/db/map.json";
 
 import "./styles/Weapons.css";
 
 const toOption = (weapon) => {
     if (!Boolean(weapon)) return null;
 
-    return { value: weapon, label: weapon.name };
+    return { value: weapon, label: `${weapon.name} (${map.categories[weapon.category_id].name})` };
 };
 
 
