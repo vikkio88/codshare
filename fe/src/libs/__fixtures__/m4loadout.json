@@ -244,5 +244,6 @@
             "unlock_level": 8,
             "unlock_description": null
         }
-    ]
+    ],
+    "tuning": {}
 }

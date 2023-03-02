@@ -6,7 +6,7 @@ import map from "../data/db/map.json";
 
 describe("Validate Loadout", () => {
     it("Returns the same loadout if it is correct", () => {
-        const correctM4 = 'm4.csg257.h2b11.spbi395.sm693.dfps14';
+        const correctM4 = 'm4-csg257-h2b11-spbi395-sm693-dfps14';
         const { weapon, attachments } = fromSlug(correctM4);
         const result = validateLoadout({ weapon, attachments });
         expect(result.weapon).toEqual(weapon);
@@ -15,7 +15,7 @@ describe("Validate Loadout", () => {
 
     it("Returns the filtered loadout if it contains duplicated categories", () => {
         //                      csg and dk are on the same category
-        const wrongM4 = 'm4.csg257.dk230.spbi395.sm693.dfps14';
+        const wrongM4 = 'm4-csg257-dk230-spbi395-sm693-dfps14';
         const { weapon, attachments } = fromSlug(wrongM4);
         const result = validateLoadout({ weapon, attachments });
         expect(result.weapon).toEqual(weapon);
@@ -24,7 +24,7 @@ describe("Validate Loadout", () => {
 
     it("Returns the filtered loadout if it contains duplicated attachments", () => {
         //                      dk230 is mentioned twice added once
-        const wrongM4 = 'm4.dk230.dk230.spbi395.sm693.dfps14';
+        const wrongM4 = 'm4-dk230-dk230-spbi395-sm693-dfps14';
         const { weapon, attachments } = fromSlug(wrongM4);
         const result = validateLoadout({ weapon, attachments });
         expect(result.weapon).toEqual(weapon);
@@ -32,7 +32,7 @@ describe("Validate Loadout", () => {
     });
 
     it("Returns the filtered loadout if it contains too many attachments", () => {
-        const wrongM4 = 'm4.csg257.h2b11.spbi395.sm693.dfps14.cb849';
+        const wrongM4 = 'm4-csg257-h2b11-spbi395-sm693-dfps14-cb849';
         const { weapon, attachments } = fromSlug(wrongM4);
         expect(attachments.length).toEqual(MAX_ATTACHMENTS);
         // from slug already filters it
@@ -48,7 +48,7 @@ describe("Validate Loadout", () => {
 
     it("Returns the filtered loadout if it contains an attachment that does not belong to the weapon", () => {
         //                                             5ap is armor piercing of SMGs
-        const wrongM4 = 'm4.csg257.h2b11.spbi395.sm693.5ap459';
+        const wrongM4 = 'm4-csg257-h2b11-spbi395-sm693-5ap459';
         const { weapon, attachments } = fromSlug(wrongM4);
         expect(attachments.length).toEqual(MAX_ATTACHMENTS - 1);
         // from slug already filters it
