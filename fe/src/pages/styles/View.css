@@ -1,7 +1,24 @@
 .View {
-    color: #575757;
+    color: #555758;
 }
-.View h1, h2, h3 { margin: 0.4em;}
+
+.View h1,
+h2,
+h3 {
+    margin: 0.1em;
+}
+
+h1.weaponName {
+    color: black;
+    margin-top: .2em;
+    margin-bottom: .5em;
+}
+
+h2.weaponCategory {
+    color: white;
+    background-color: #444748;
+    font-size: small;
+}
 
 .sharing {
     margin-top: 2em;
@@ -11,8 +28,8 @@
     align-items: center;
     gap: .5em;
 }
-.sharing input {
 
+.sharing input {
     font-size: 1.2em;
     padding: .4em;
 }
@@ -22,6 +39,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #444748;
+    border: #FFB744 solid 2px;
+    color: white;
+    margin-bottom: .4em;
+    padding: 1em;
 }
 
 .attachmentRow>div {

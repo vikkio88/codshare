@@ -13,10 +13,12 @@ const View = () => {
     const [showSharing, setShowSharing] = useState(false);
     const config = fromSlug(params.slug);
     const sharingUrl = `${window.location.origin}/view/${params.slug}`;
+    const category = map.categories[config.weapon.category_id].name;
+    const categoryString = category.substring(0, category.length - 1);
     return (
         <div className="View">
-            <h1 className="weaponShow">{config.weapon.name}</h1>
-            <h2>({map.categories[config.weapon.category_id].name})</h2>
+            <h2 className="weaponCategory">{categoryString}</h2>
+            <h1 className="weaponName">{config.weapon.name}</h1>
             <AttachIndicators attachmentsCount={config.attachments.length} />
             {config.attachments.map((a, i) => (
                 <div className="attachmentRow" key={a.id}>
