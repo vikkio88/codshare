@@ -1,15 +1,18 @@
 import { useNavigate, useParams } from 'react-router-dom';
+import { QRCodeSVG } from 'qrcode.react';
 import { fromSlug } from '../libs/slugger';
 import AttachIndicators from '../components/AttachIndicators';
 import './styles/View.css';
 
 import map from "../data/db/map.json";
+import { useState } from 'react';
 
 const View = () => {
     const params = useParams();
     const to = useNavigate();
+    const [showSharing, setShowSharing] = useState(false);
     const config = fromSlug(params.slug);
-    const share = () => navigator.clipboard.writeText(`${window.location.origin}/view/${params.slug}`);
+    const sharingUrl = `${window.location.origin}/view/${params.slug}`;
     return (
         <div className="View">
             <h1 className="weaponShow">{config.weapon.name}</h1>
@@ -31,8 +34,15 @@ const View = () => {
             <div className="actionButtons">
                 <button onClick={() => to(`/edit/${params.slug}`)}>✏️</button>
                 <button onClick={() => to(`/`)}>➕</button>
-                <button onClick={share}>🔗</button>
+                <button onClick={() => setShowSharing(!showSharing)}>🔗</button>
             </div>
+
+            {showSharing && (
+                <div className="sharing">
+                    <QRCodeSVG className="qr" value={sharingUrl} />
+                    <input value={sharingUrl} onClick={e => e.target.select()} onChange={() => { }} />
+                </div>
+            )}
         </div>
     );
 };

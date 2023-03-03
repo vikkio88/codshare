@@ -3,6 +3,20 @@
 }
 .View h1, h2, h3 { margin: 0.4em;}
 
+.sharing {
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .5em;
+}
+.sharing input {
+
+    font-size: 1.2em;
+    padding: .4em;
+}
+
 .attachmentRow {
     display: flex;
     flex-direction: column;

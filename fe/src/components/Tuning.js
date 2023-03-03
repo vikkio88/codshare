@@ -14,11 +14,11 @@ const Tuning = ({ tuning = {}, number, onTune }) => {
             <button onClick={() => setThisTuning({ ...thisTuning, show: !thisTuning.show })}>🔧</button>
             {thisTuning.show && (
                 <div className="tuning">
-                    <input type="number" placeholder="↕" size={6} value={thisTuning.values[0]} onChange={e => {
+                    <input type="number" placeholder="↕" size={3} value={thisTuning.values[0]} onChange={e => {
                         const { value } = e.target;
                         onTune({ index: number, subIndex: 0, value });
                     }} />
-                    <input type="number" placeholder="↔" size={6} value={thisTuning.values[1]} onChange={e => {
+                    <input type="number" placeholder="↔" size={3} value={thisTuning.values[1]} onChange={e => {
                         const { value } = e.target;
                         onTune({ index: number, subIndex: 1, value });
                     }} />
