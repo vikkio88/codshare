@@ -1,5 +1,6 @@
 .View {
     color: #555758;
+    text-align: center;
 }
 
 .View h1,
@@ -14,10 +15,14 @@ h1.weaponName {
     margin-bottom: .5em;
 }
 
-h2.weaponCategory {
-    color: white;
+.weaponCategory {
     background-color: #444748;
-    font-size: small;
+    display: inline-block;
+}
+
+.weaponCategory h2 {
+    color: white;
+    font-size: 1em;
 }
 
 .sharing {
@@ -51,4 +56,8 @@ h2.weaponCategory {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+}
+
+.tuningVals {
+    gap: 2em;
 }

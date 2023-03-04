@@ -6,6 +6,7 @@ import './styles/View.css';
 
 import map from "../data/db/map.json";
 import { useState } from 'react';
+import T from '../components/T';
 
 const View = () => {
     const params = useParams();
@@ -17,7 +18,9 @@ const View = () => {
     const categoryString = category.substring(0, category.length - 1);
     return (
         <div className="View">
-            <h2 className="weaponCategory">{categoryString}</h2>
+            <div className="weaponCategory">
+                <h2>{categoryString}</h2>
+            </div>
             <h1 className="weaponName">{config.weapon.name}</h1>
             <AttachIndicators attachmentsCount={config.attachments.length} />
             {config.attachments.map((a, i) => (
@@ -26,7 +29,7 @@ const View = () => {
                         {a.name} ({map.attachmentCategories[a.category_id].name})
                     </h2>
                     {config.tuning?.[i] && (
-                        <div>
+                        <div className="tuningVals">
                             {Boolean(config.tuning?.[i][0]) && <h2 className="tuningVal">↕️ {config.tuning?.[i][0]}</h2>}
                             {Boolean(config.tuning?.[i][1]) && <h2 className="tuningVal">↔️ {config.tuning?.[i][1]}</h2>}
                         </div>
@@ -34,9 +37,15 @@ const View = () => {
                 </div>
             ))}
             <div className="actionButtons">
-                <button onClick={() => to(`/edit/${params.slug}`)}>✏️</button>
-                <button onClick={() => to(`/`)}>➕</button>
-                <button onClick={() => setShowSharing(!showSharing)}>🔗</button>
+                <T title="Edit">
+                    <button onClick={() => to(`/edit/${params.slug}`)}>✏️</button>
+                </T>
+                <T title="Create New">
+                    <button onClick={() => to(`/create`)}>➕</button>
+                </T>
+                <T title="Share">
+                    <button onClick={() => setShowSharing(!showSharing)}>🔗</button>
+                </T>
             </div>
 
             {showSharing && (

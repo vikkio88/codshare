@@ -5,6 +5,7 @@ import { fromSlug, slugger } from "../libs/slugger";
 
 import './styles/Create.css';
 import { useNavigate, useParams } from "react-router-dom";
+import T from "../components/T";
 
 const initialConfig = { weapon: null, attachments: [], tuning: {} };
 
@@ -23,6 +24,7 @@ const Create = () => {
     };
     return (
         <>
+            <h1>{params?.slug ? "Edit" : "Create"} Loadout</h1>
             <Weapons
                 onSelect={({ value: weapon }) => appendConfig({ weapon, attachments: [], tuning: {} })}
                 onReset={() => setConfig({ ...initialConfig })}
@@ -34,7 +36,9 @@ const Create = () => {
             />
 
             <div className="actionButtons">
-                <button disabled={!Boolean(config.weapon)} onClick={() => to(`/view/${slugger(config)}`)}>💾</button>
+                <T title="Save">
+                    <button disabled={!Boolean(config.weapon)} onClick={() => to(`/view/${slugger(config)}`)}>💾</button>
+                </T>
             </div>
         </>
     );
